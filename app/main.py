@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from app.common.logger import get_logger
 from app.common.custom_exception import CustomException
 import os
-ui_path = os.path.abspath("frontend/ui.py")
+#ui_path = os.path.abspath("/frontend/ui.py")
 logger = get_logger(__name__)
 load_dotenv()
 
@@ -20,7 +20,7 @@ def run_backend():
 def run_frontend():
     try:
         logger.info("Starting frontend server...")
-        subprocess.run(["streamlit", "run", ui_path], check=True)
+        subprocess.run(["streamlit", "run", "app/frontend/ui.py"], check=True)
     except subprocess.CalledProcessError as e:
         logger.error(f"Frontend server failed to start: {e}")
         raise CustomException("Frontend server failed to start", error_detail=e)
